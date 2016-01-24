@@ -13,6 +13,16 @@ namespace CheesedTables
 		{
 		}
 
+		public async Task<List<CheeseReviewEntity>> SearchCheeseReviews(string emailAddress)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public async Task SaveReview(CheeseReviewEntity entity)
+		{
+			throw new NotImplementedException ();
+		}
+
 		private async Task<StorageCredentials> GetStorageCredentials ()
 		{
 			try {

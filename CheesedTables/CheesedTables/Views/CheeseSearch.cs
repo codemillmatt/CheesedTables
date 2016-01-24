@@ -15,6 +15,18 @@ namespace CheesedTables
 			searchResults = new ListView ();
 			searchBar = new SearchBar () { Placeholder = "Reviewer Email" };
 
+			var addButtonItem = new ToolbarItem ();
+			addButtonItem.Text = "Add";
+			addButtonItem.Clicked += async (sender, e) => {
+				var addReview = new AddReview();
+
+				var navPage = new NavigationPage(addReview);
+
+				await Navigation.PushModalAsync(navPage);
+			};
+
+			this.ToolbarItems.Add (addButtonItem);
+
 			searchBar.SearchButtonPressed += (sender, e) => {
 
 			};
