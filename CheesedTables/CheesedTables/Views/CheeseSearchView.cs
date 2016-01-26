@@ -40,7 +40,7 @@ namespace CheesedTables
 			var addButtonItem = new ToolbarItem ();
 			addButtonItem.Text = "Add";
 			addButtonItem.Clicked += async (sender, e) => {
-				var addReview = new AddReview();
+				var addReview = new AddReviewView();
 
 				var navPage = new NavigationPage(addReview);
 
