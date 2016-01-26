@@ -19,6 +19,8 @@ namespace CheesedTables.Droid
 
 			global::Xamarin.Forms.Forms.Init (this, bundle);
 
+			Akavache.BlobCache.ApplicationName = "CheesedTables";
+
 			LoadApplication (new App ());
 		}
 	}

@@ -14,6 +14,8 @@ namespace CheesedTables.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 
+			Akavache.BlobCache.ApplicationName = "CheesedTables";
+
 			LoadApplication (new App ());
 
 			return base.FinishedLaunching (app, options);

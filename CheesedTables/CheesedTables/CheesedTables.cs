@@ -9,7 +9,7 @@ namespace CheesedTables
 		public App ()
 		{
 			// The root page of your application
-			var navRoot = new CheeseSearch();
+			var navRoot = new CheeseSearchView();
 
 			var mainRoot = new NavigationPage (navRoot);
 
