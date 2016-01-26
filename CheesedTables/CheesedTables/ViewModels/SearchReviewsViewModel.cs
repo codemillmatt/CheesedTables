@@ -15,6 +15,18 @@ namespace CheesedTables
 		public SearchReviewsViewModel ()
 		{
 			Reviews = new ObservableCollection<CheeseReviewEntity> ();
+
+			// Take the first 10 results that we have in Akavache
+			BlobCache.LocalMachine.GetAllObjects<CheeseReviewEntity> ()
+				.Take (10)
+				.Subscribe ((allReviews) => {
+					Device.BeginInvokeOnMainThread(()=>
+						{							
+							foreach (var item in allReviews) {
+								Reviews.Add(item);
+							}
+						});
+			});
 		}
 
 		#region INotifyPropertyChanged implementation

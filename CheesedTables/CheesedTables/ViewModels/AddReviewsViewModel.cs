@@ -82,6 +82,7 @@ namespace CheesedTables
 			entityToSave.CheeseType = CheeseType;
 			entityToSave.Comments = Comments;
 			entityToSave.DairyName = DairyName;
+			entityToSave.EmailAddress = Email;
 			entityToSave.ReviewDate = DateTime.Now;
 
 			// First add to Akavache (ideally in Akavache we would also keep track of whether it uploaded successfully or not
@@ -98,7 +99,7 @@ namespace CheesedTables
 			if (success) {
 				// Could display a success or failure message
 
-				// We could also keep track of whether the entity has been uploaded yet or not for offline access
+				// We should also keep track of whether the entity has been uploaded yet or not for offline access
 			
 
 				// Pop the modal off the stack
