@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Xamarin.Forms;
+using System.Threading.Tasks;
 
 namespace CheesedTables
 {
@@ -27,8 +28,9 @@ namespace CheesedTables
 
 			this.ToolbarItems.Add (addButtonItem);
 
-			searchBar.SearchButtonPressed += (sender, e) => {
-
+			searchBar.SearchButtonPressed += async (sender, e) => {
+				var service = new CheeseTableService ();
+				service.GetCheeseReview("A",Guid.Parse("e8a9b095-7cdc-48e0-87a6-ba4297b6f45b"));
 			};
 
 			Content = new StackLayout { 

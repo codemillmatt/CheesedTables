@@ -20,17 +20,15 @@ namespace CheesedTables
 			var saveButton = new ToolbarItem () { Text = "Save" };
 			saveButton.Clicked += async (object sender, EventArgs e) => {
 				// Create a new review 
-				var review = new Review();
+				var review = new CheeseReviewEntity(email.Text, Guid.NewGuid());
 				review.CheeseType = cheeseType.Text;
 				review.Comments = comments.Text;
 				review.DairyName = dairy.Text;
 				review.EmailAddress = email.Text;
 				review.ReviewDate = DateTime.Now;
 
-				var entity = new CheeseReviewEntity(review);
-
 				var service = new CheeseTableService();
-				service.SaveReview(entity);
+				await service.SaveReviewAsync(review);
 
 				await Navigation.PopModalAsync();
 			};

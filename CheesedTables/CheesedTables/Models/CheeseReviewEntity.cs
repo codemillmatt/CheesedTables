@@ -6,15 +6,38 @@ namespace CheesedTables
 {
 	public class CheeseReviewEntity : TableEntity
 	{
-		public CheeseReviewEntity (Review cheeseReview)
+		public CheeseReviewEntity (string emailAddress, Guid rowKey)
 		{
-			this.PartitionKey = cheeseReview.CheeseType;
-			this.RowKey = cheeseReview.EmailAddress;
-
-			CheeseReviews = new List<Review> () { cheeseReview };
+			this.PartitionKey = emailAddress;
+			this.RowKey = rowKey.ToString ();
 		}
 
-		public List<Review> CheeseReviews {
+		public CheeseReviewEntity ()
+		{
+			
+		}
+			
+		public string EmailAddress {
+			get;
+			set;
+		}
+
+		public string CheeseType {
+			get;
+			set;
+		}
+
+		public string DairyName {
+			get;
+			set;
+		}
+
+		public DateTime ReviewDate {
+			get;
+			set;
+		}
+
+		public string Comments {
 			get;
 			set;
 		}
