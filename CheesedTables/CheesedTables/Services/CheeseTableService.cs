@@ -59,19 +59,12 @@ namespace CheesedTables
 			try {
 				if (client == null)
 					await InitializeCloudClientAsync ();
-						
-				var table = client.GetTableReference (reviewTable);
+				
+				var table = client.GetTableReference (reviewTable); 
 
 				// Generate a query
-				var query = new TableQuery ();
-				query.Select (new List<string> () { 
-					EmailAddressPropName,
-					CheeseTypePropName,
-					DairyNamePropName,
-					ReviewDatePropName,
-					CommentsPropName
-				});
-					
+				var query = new TableQuery<CheeseReviewEntity> ();
+							
 				// Looking for an exact match
 				query.Where (TableQuery.GenerateFilterCondition ("PartitionKey", QueryComparisons.Equal, emailAddress));
 
@@ -87,31 +80,9 @@ namespace CheesedTables
 				continueToken = s.ContinuationToken;
 
 				var searchResults = s.Results;
-		
-				foreach (var item in searchResults) {
-					var newCheeseResult = new CheeseReviewEntity ();
 
-					// all the columns will be stored within the properties dictionary
-					EntityProperty ep;
+				results.AddRange (s.Results);
 
-					ep = item.Properties [CheeseTypePropName];
-					newCheeseResult.CheeseType = ep.StringValue;
-
-					ep = item.Properties [CommentsPropName];
-					newCheeseResult.Comments = ep.StringValue;
-
-					ep = item.Properties [DairyNamePropName];
-					newCheeseResult.DairyName = ep.StringValue;
-
-					ep = item.Properties [EmailAddressPropName];
-					newCheeseResult.EmailAddress = ep.StringValue;
-
-					ep = item.Properties [ReviewDatePropName];
-					if (ep.DateTime.HasValue)
-						newCheeseResult.ReviewDate = ep.DateTime.Value;
-
-					results.Add (newCheeseResult);
-				}
 			} catch (Exception ex) {
 				var exMsg = ex.ToString ();
 			}
